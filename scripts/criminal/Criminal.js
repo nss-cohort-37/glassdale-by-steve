@@ -2,15 +2,17 @@ const Criminal = (criminal) => {
     return `
         <section class="criminal">
             <header class="criminal__header">
-               ${criminal.name.first} ${criminal.name.last}
+               ${criminal.name}
             </header>
             <div>Age: ${criminal.age}</div>
             <div>
-                Crimes:
-                ${criminal.convictions.map(currentConviction =>{
-                    return currentConviction.crime
-                }).join(", ")
-                }
+                Crime: ${criminal.conviction}
+            </div>
+            <div>
+                Term start: ${new Date(criminal.incarceration.start).toLocaleDateString('en-US')}
+            </div>
+            <div>
+                Term end: ${new Date(criminal.incarceration.end).toLocaleDateString('en-US')}
             </div>
         </section>
     `

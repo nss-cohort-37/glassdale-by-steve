@@ -4,12 +4,17 @@ const setCrimes = (crimeArray) => {
     crimes = crimeArray.splice(0)
 }
 
+export const useCrimes = () => crimes.sort()
+
 export const getCrimes = () => {
     // Load database state into application state
-    return fetch("https://api.glassdale.us/crimes")
+    return fetch("https://api.glassdale.us/crimes", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
+    })
         .then(response => response.json())
-        .then((crimeArray) => {
-            setCrimes(crimeArray)
-            return crimes
-        })
+        .then(setCrimes)
 }

@@ -4,10 +4,17 @@ const setCriminals = criminalArray => criminals = criminalArray.splice(0)
 
 export const getCriminalsByCrime = crime => {
     return criminals.filter(currentCriminal => {
-        for (const conviction of currentCriminal.convictions) {
-            if (conviction.toLowerCase() === crime.toLowerCase()) {
-                return true
-            }
+        if (currentCriminal.conviction.toLowerCase() === crime.toLowerCase()) {
+            return true
+        }
+        return false
+    })
+}
+
+export const getCriminalsByOfficer = officerName => {
+    return criminals.filter(currentCriminal => {
+        if (currentCriminal.arrestingOfficer.toLowerCase() === officerName.toLowerCase()) {
+            return true
         }
         return false
     })
@@ -20,5 +27,6 @@ export const getCriminals = () => {
         method: "GET"
     })
         .then(response => response.json())
+        .then(setCriminals)
 }
 
