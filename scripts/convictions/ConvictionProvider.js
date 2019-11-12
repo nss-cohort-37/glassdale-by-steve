@@ -8,7 +8,7 @@ export const useCrimes = () => crimes.sort()
 
 export const getCrimes = () => {
     // Load database state into application state
-    return fetch("https://api.glassdale.us/crimes", {
+    return fetch("http://criminals.glassdale.us/crimes", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

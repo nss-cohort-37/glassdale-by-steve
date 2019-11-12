@@ -23,7 +23,7 @@ export const getCriminalsByOfficer = officerName => {
 export const useCriminals = () => criminals
 export const getCriminals = () => {
     // Load database state into application state
-    return fetch("https://api.glassdale.us/criminals", {
+    return fetch("http://criminals.glassdale.us/criminals", {
         method: "GET"
     })
         .then(response => response.json())

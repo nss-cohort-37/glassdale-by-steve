@@ -8,7 +8,7 @@ export const useOfficers = () => officers
 
 export const getOfficers = () => {
     // Load database state into application state
-    return fetch("https://api.glassdale.us/officers", {
+    return fetch("http://criminals.glassdale.us/officers", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
