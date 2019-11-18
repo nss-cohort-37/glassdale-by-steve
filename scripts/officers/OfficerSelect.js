@@ -1,13 +1,13 @@
 import { useOfficers } from "./OfficerProvider.js"
 
-const EventTarget = document.querySelector(".container")
-const DOMTarget = document.querySelector(".filters__officer")
+const eventTarget = document.querySelector(".container")
+const contentTarget = document.querySelector(".filters__officer")
 
-EventTarget.addEventListener(
+eventTarget.addEventListener(
     "change",
     changeEvent => {
         if (changeEvent.target.id === "officerSelect") {
-            EventTarget.dispatchEvent(new CustomEvent("filter.criminals.officer", {
+            eventTarget.dispatchEvent(new CustomEvent("filter.criminals.officer", {
                 detail: {
                     officerName: changeEvent.target.value
                 }
@@ -20,7 +20,7 @@ const OfficerSelect = () => {
     const officers = useOfficers()
 
     const render = criminals => {
-        DOMTarget.innerHTML = `
+        contentTarget.innerHTML = `
             <select class="dropdown" id="officerSelect">
                 <option value="0">Please select an officer...</option>
                 ${officers.map(currentOfficer => {

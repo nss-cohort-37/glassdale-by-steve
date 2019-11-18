@@ -1,13 +1,13 @@
 import { useCrimes } from "./ConvictionProvider.js"
 
-const EventTarget = document.querySelector(".container")
-const DOMTarget = document.querySelector(".filters__crime")
+const eventTarget = document.querySelector(".container")
+const contentTarget = document.querySelector(".filters__crime")
 
-EventTarget.addEventListener(
+eventTarget.addEventListener(
     "change",
     changeEvent => {
         if (changeEvent.target.id === "crimeSelect") {
-            EventTarget.dispatchEvent(new CustomEvent("filter.criminals.crime", {
+            eventTarget.dispatchEvent(new CustomEvent("filter.criminals.crime", {
                 detail: {
                     crimeId: changeEvent.target.value
                 }
@@ -20,7 +20,7 @@ const ConvictionSelect = () => {
     const crimes = useCrimes()
 
     const render = criminals => {
-        DOMTarget.innerHTML = `
+        contentTarget.innerHTML = `
             <select class="dropdown" id="crimeSelect">
                 <option value="0">Please select a crime...</option>
                 ${crimes.map(currentCrime => {
