@@ -9,7 +9,7 @@ const CriminalList = () => {
     // Load the application state to be used by this component
     const appStateCriminals = useCriminals()
 
-    // What should happen when detective clicks on a crime in the <select> element?
+    // What should happen when detective selects a crime?
     eventHub.addEventListener('crimeSelected', event => {
         if ("crimeId" in event.detail) {
             if (event.detail.crimeId === "0") {
