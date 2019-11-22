@@ -2,7 +2,7 @@ import { useCriminals, getCriminalsByOfficer } from "./CriminalProvider.js"
 import { getCriminalsByCrime } from "./CriminalProvider.js"
 import Criminal from "./Criminal.js"
 
-const eventTarget = document.querySelector(".container")
+const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".criminalsContainer")
 
 const CriminalList = () => {
@@ -10,7 +10,7 @@ const CriminalList = () => {
     const appStateCriminals = useCriminals()
 
     // What should happen when detective clicks on a crime in the <select> element?
-    eventTarget.addEventListener('crimeSelected', event => {
+    eventHub.addEventListener('crimeSelected', event => {
         if ("crimeId" in event.detail) {
             if (event.detail.crimeId === "0") {
                 render(appStateCriminals)
@@ -22,7 +22,7 @@ const CriminalList = () => {
     })
 
     // What should happen when detective clicks on a crime in the <select> element?
-    eventTarget.addEventListener('officerSelected', event => {
+    eventHub.addEventListener('officerSelected', event => {
         if ("officerName" in event.detail) {
             if (event.detail.officerName === "0") {
                 render(appStateCriminals)
