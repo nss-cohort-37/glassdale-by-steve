@@ -10,7 +10,7 @@ const CriminalList = () => {
     const appStateCriminals = useCriminals()
 
     // What should happen when detective clicks on a crime in the <select> element?
-    eventTarget.addEventListener('filter.criminals.crime', event => {
+    eventTarget.addEventListener('crimeSelected', event => {
         if ("crimeId" in event.detail) {
             if (event.detail.crimeId === "0") {
                 render(appStateCriminals)
@@ -22,10 +22,14 @@ const CriminalList = () => {
     })
 
     // What should happen when detective clicks on a crime in the <select> element?
-    eventTarget.addEventListener('filter.criminals.officer', event => {
+    eventTarget.addEventListener('officerSelected', event => {
         if ("officerName" in event.detail) {
-            const filteredCriminals = getCriminalsByOfficer(event.detail.officerName)
-            render(filteredCriminals)
+            if (event.detail.officerName === "0") {
+                render(appStateCriminals)
+            } else {
+                const filteredCriminals = getCriminalsByOfficer(event.detail.officerName)
+                render(filteredCriminals)
+            }
         }
     })
 
@@ -35,11 +39,11 @@ const CriminalList = () => {
             <article class="criminalComponent">
                 <div class="criminals">
                     ${
-                        criminals.map(currentCriminalObject => {
-                            const criminalHTML = Criminal(currentCriminalObject)
-                            return criminalHTML
-                        }).join("")
-                    }
+            criminals.map(currentCriminalObject => {
+                const criminalHTML = Criminal(currentCriminalObject)
+                return criminalHTML
+            }).join("")
+            }
                 </div>
             </article>
         `

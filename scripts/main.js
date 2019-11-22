@@ -1,12 +1,12 @@
 import { getCriminals } from "./Criminal/CriminalProvider.js"
-import { getCrimes } from "./convictions/ConvictionProvider.js"
+import { getConvictions } from "./convictions/ConvictionProvider.js"
 import { getOfficers } from "./officers/OfficerProvider.js"
 import CriminalList from "./Criminal/CriminalList.js"
 import ConvictionSelect from "./convictions/ConvictionSelect.js"
 import OfficerSelect from "./officers/OfficerSelect.js"
 
 const loadData = () => {
-    return getCrimes()
+    return getConvictions()
         .then(getCriminals)
         .then(getOfficers)
 }
