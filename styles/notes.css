@@ -1,0 +1,9 @@
+.noteFormContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.note__field {
+    flex-basis: 30%;
+}

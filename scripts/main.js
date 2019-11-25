@@ -4,6 +4,7 @@ import { getOfficers } from "./officers/OfficerProvider.js"
 import CriminalList from "./Criminal/CriminalList.js"
 import ConvictionSelect from "./convictions/ConvictionSelect.js"
 import OfficerSelect from "./officers/OfficerSelect.js"
+import NoteFormComponent from "./notes/NoteForm.js"
 
 const loadData = () => {
     return getConvictions()
@@ -14,5 +15,6 @@ const loadData = () => {
 loadData()
     .then(ConvictionSelect)
     .then(OfficerSelect)
+    .then(NoteFormComponent)
     .then(CriminalList)
 
