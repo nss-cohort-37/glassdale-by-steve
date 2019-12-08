@@ -1,7 +1,7 @@
 let convictions = []
 
 const setConvictions = (crimeArray) => {
-    convictions = crimeArray.splice(0)
+    convictions = crimeArray.slice()
 }
 
 export const useConvictions = () => convictions.sort()

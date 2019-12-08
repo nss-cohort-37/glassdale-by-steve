@@ -5,6 +5,12 @@
       "criminal": "Alek",
       "timestamp": 1574694465038,
       "id": 1
+    },
+    {
+      "noteText": "I trhink he did it",
+      "criminal": "Michel Stamm",
+      "timestamp": 1575668861017,
+      "id": 2
     }
   ]
 }
