@@ -4,7 +4,7 @@ const setNotes = (noteArray) => {
     notes = noteArray.slice()
 }
 
-export const useNotes = () => notes
+export const useNotes = () => notes.slice()
 
 export const saveNote = note => {
     fetch('http://localhost:8088/notes', {
@@ -19,12 +19,9 @@ export const saveNote = note => {
 
 export const getNotes = () => {
     // Load database state into application state
-    return fetch("http://localhost:8088/notes", {
-        method: "GET",
-        headers: {
-            "Accept": "application/json"
-        }
-    })
-        .then(_ => _.json())
-        .then(setNotes)
+    return fetch("http://localhost:8088/notes")
+        .then(response => response.json())
+        .then((noteArray) => {
+            notes = noteArray.slice()
+        })
 }

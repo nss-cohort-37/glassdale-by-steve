@@ -1,5 +1,4 @@
-const Criminal = (criminal) => {
-    return `
+const Criminal = criminal => `
         <section class="criminal">
             <header class="criminal__header">
                ${criminal.name}
@@ -14,8 +13,8 @@ const Criminal = (criminal) => {
             <div>
                 Term end: ${new Date(criminal.incarceration.end).toLocaleDateString('en-US')}
             </div>
+            <button id="associates--${criminal.id}">Associate Alibis</button>
         </section>
     `
-}
 
 export default Criminal

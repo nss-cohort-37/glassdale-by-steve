@@ -1,10 +1,10 @@
 let convictions = []
 
 const setConvictions = (crimeArray) => {
-    convictions = crimeArray.slice()
+    convictions = crimeArray
 }
 
-export const useConvictions = () => convictions.sort()
+export const useConvictions = () => convictions.sort().slice()
 
 export const getConvictions = () => {
     // Load database state into application state

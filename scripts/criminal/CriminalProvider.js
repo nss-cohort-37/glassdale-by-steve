@@ -20,7 +20,7 @@ export const getCriminalsByOfficer = officerName => {
     })
 }
 
-export const useCriminals = () => criminals
+export const useCriminals = () => criminals.slice()
 export const getCriminals = () => {
     // Load database state into application state
     return fetch("http://criminals.glassdale.us/criminals", {

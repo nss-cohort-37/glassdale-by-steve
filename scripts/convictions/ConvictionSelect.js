@@ -1,4 +1,4 @@
-import { useConvictions } from "./ConvictionProvider.js"
+import { useConvictions, getConvictions } from "./ConvictionProvider.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".filters__crime")
@@ -7,21 +7,28 @@ const contentTarget = document.querySelector(".filters__crime")
 const ConvictionSelect = () => {
     const convictions = useConvictions()
 
-    eventHub.addEventListener(
-        "change",
-        changeEvent => {
-            if (changeEvent.target.id === "crimeSelect") {
-                eventHub.dispatchEvent(new CustomEvent("crimeSelected", {
-                    detail: {
-                        crimeId: changeEvent.target.value
-                    }
-                }))
-            }
+    // What should this component say to the event hub, and when
+    eventHub.addEventListener("change", changeEvent => {
+        if (changeEvent.target.id === "crimeSelect") {
+            // Make a custom event to "talk" to other components
+            const selectedCrime = "arson"
+
+            const message = new CustomEvent("crimeSelected", {
+                detail: {
+                    crime: selectedCrime
+                }
+            })
+
+            // Dispatch it
+            eventHub.dispatchEvent(message)
         }
-    )
+    })
+
+
+
 
     const render = convictionsCollection => {
-        contentTarget.innerHTML = `
+        contentTarget.innerHTML += `
             <select class="dropdown" id="crimeSelect">
                 <option value="0">Please select a crime...</option>
                 ${
