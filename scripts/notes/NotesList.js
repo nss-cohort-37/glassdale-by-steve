@@ -1,13 +1,35 @@
-import { getNotes, useNotes } from "./NoteProvider.js"
+import { getNotes, useNotes, deleteNote } from "./NoteProvider.js"
 
 const contentTarget = document.querySelector(".notesContainer")
 const eventHub = document.querySelector(".container")
 
 const NoteListComponent = () => {
 
-    eventHub.addEventListener("showNoteButtonClicked", event => {
+    eventHub.addEventListener("click", clickEvent => {
+        if (clickEvent.target.id.startsWith("deleteNote--")) {
+            const [deletePrefix, noteId] = clickEvent.target.id.split("--")
+
+            deleteNote(noteId).then(
+                () => {
+                    const theNewNotes = useNotes()
+                    render(theNewNotes)
+                }
+            )
+        }
+    })
+
+    const renderNotesAgain = () => {
         const allTheNotes = useNotes()
         render(allTheNotes)
+
+    }
+
+    eventHub.addEventListener("noteCreated", event => {
+        renderNotesAgain()
+    })
+
+    eventHub.addEventListener("showNoteButtonClicked", event => {
+        renderNotesAgain()
     })
 
     const render = (notesCollection) => {
@@ -18,6 +40,7 @@ const NoteListComponent = () => {
                         <div>${individualNote.suspect}</div>
                         <div>${individualNote.text}</div>
                         <div>${individualNote.date}</div>
+                        <button id="deleteNote--${individualNote.id}">Delete</button>
                     </section>
                 `
             }

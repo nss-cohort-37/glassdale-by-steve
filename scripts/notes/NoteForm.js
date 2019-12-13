@@ -16,7 +16,13 @@ const NoteFormComponent = () => {
                 date: Date.now()
             }
 
-            saveNote(newNote)
+            saveNote(newNote).then(
+                () => {
+                    const message = new CustomEvent("noteCreated")
+                    eventHub.dispatchEvent(message)
+                }
+            )
+
         }
     })
 
