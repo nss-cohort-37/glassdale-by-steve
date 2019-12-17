@@ -1,0 +1,19 @@
+{
+  "eateries": [
+    {
+      "businessName": "Marge's Pancake House",
+      "description": "Marge has been making pancakes from her family recipe for 50 years. People love to eat at Marge's Pancake House because everyone who works there dresses as a famous actor every day for work.",
+      "state": "IN",
+      "city": "Gary",
+      "id": 1,
+      "ameneties": {
+          "wheelchairAccessible": true,
+          "petFriendly": false,
+          "wifi": true,
+          "diaperFacility": false,
+          "playground": false,
+          "restrooms": true
+      }
+    }
+  ]
+}
