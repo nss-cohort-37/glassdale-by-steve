@@ -33,7 +33,8 @@ const NoteFormComponent = () => {
                 const editedNote = {
                     id: parseInt(document.querySelector("#note-id").value, 10),
                     text: document.querySelector("#note-text").value,
-                    suspect: document.querySelector("#note-criminal").value
+                    suspect: document.querySelector("#note-criminal").value,
+                    date: Date.now()
                 }
 
                 editNote(editedNote).then(() => {

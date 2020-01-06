@@ -13,15 +13,16 @@
       "id": 2
     },
     {
-      "text": "This person is awesome",
+      "id": 3,
+      "text": "This person is meh",
       "suspect": "Mo",
-      "date": 1576270447886,
-      "id": 3
+      "date": 1576269963891
     },
     {
       "id": 4,
-      "text": "You are wrong ",
-      "suspect": "Aja"
+      "text": "You are maybe wrong ",
+      "suspect": "Aja",
+      "date": 1578329823411
     }
   ]
 }

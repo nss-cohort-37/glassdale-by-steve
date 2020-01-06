@@ -5,6 +5,11 @@ const eventHub = document.querySelector(".container")
 
 const NoteListComponent = () => {
 
+    eventHub.addEventListener("noteHasBeenEdited", event => {
+        const updatedNotes = useNotes()
+        render(updatedNotes)
+    })
+
     eventHub.addEventListener("click", clickEvent => {
         if (clickEvent.target.id.startsWith("editNote--")) {
             const [deletePrefix, noteId] = clickEvent.target.id.split("--")
@@ -51,7 +56,10 @@ const NoteListComponent = () => {
                     <section class="note">
                         <div>${individualNote.suspect}</div>
                         <div>${individualNote.text}</div>
-                        <div>${individualNote.date}</div>
+                        <div>
+                            ${new Date(individualNote.date).toLocaleDateString("us-en")}
+                            ${new Date(individualNote.date).toLocaleTimeString("us-en")}
+                        </div>
                         <button id="deleteNote--${individualNote.id}">Delete</button>
                         <button id="editNote--${individualNote.id}">Edit</button>
                     </section>
