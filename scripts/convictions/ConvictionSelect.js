@@ -11,7 +11,7 @@ const ConvictionSelect = () => {
     eventHub.addEventListener("change", changeEvent => {
         if (changeEvent.target.id === "crimeSelect") {
             // Make a custom event to "talk" to other components
-            const selectedCrime = "arson"
+            const selectedCrime = changeEvent.target.value
 
             const message = new CustomEvent("crimeSelected", {
                 detail: {

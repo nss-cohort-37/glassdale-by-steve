@@ -14,8 +14,9 @@ const CriminalList = () => {
     })
 
     // What should happen when detective selects a crime?
-    eventHub.addEventListener("crimeSelected", event => {
+    eventHub.addEventListener("filterClicked", event => {
         const crimeName = event.detail.crime
+        const officerName = event.detail.officer
 
         const filteredCriminals = appStateCriminals.filter(
             (individualCriminal) => {
@@ -24,21 +25,26 @@ const CriminalList = () => {
                 }
             }
         )
+        .filter(criminal => {
+            if (criminal.arrestingOfficer === officerName) {
+                return criminal
+            }
+        })
 
         render(filteredCriminals)
     })
 
     // What should happen when detective clicks on a crime in the <select> element?
-    eventHub.addEventListener('officerSelected', event => {
-        if ("officerName" in event.detail) {
-            if (event.detail.officerName === "0") {
-                render(appStateCriminals)
-            } else {
-                const filteredCriminals = getCriminalsByOfficer(event.detail.officerName)
-                render(filteredCriminals)
-            }
-        }
-    })
+    // eventHub.addEventListener('officerSelected', event => {
+    //     if ("officerName" in event.detail) {
+    //         if (event.detail.officerName === "0") {
+    //             render(appStateCriminals)
+    //         } else {
+    //             const filteredCriminals = getCriminalsByOfficer(event.detail.officerName)
+    //             render(filteredCriminals)
+    //         }
+    //     }
+    // })
 
     eventHub.addEventListener("click", clickEvent => {
         if (clickEvent.target.id.startsWith("associates--")) {
