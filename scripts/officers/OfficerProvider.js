@@ -1,10 +1,10 @@
 let officers = []
 
 const setOfficers = (officerArray) => {
-    officers = officerArray.splice(0)
+    officers = officerArray
 }
 
-export const useOfficers = () => officers
+export const useOfficers = () => officers.slice()
 
 export const getOfficers = () => {
     // Load database state into application state
