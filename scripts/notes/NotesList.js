@@ -6,6 +6,18 @@ const eventHub = document.querySelector(".container")
 const NoteListComponent = () => {
 
     eventHub.addEventListener("click", clickEvent => {
+        if (clickEvent.target.id.startsWith("editNote--")) {
+            const [deletePrefix, noteId] = clickEvent.target.id.split("--")
+
+            const editEvent = new CustomEvent("editButtonClicked", {
+                detail: {
+                    noteId: noteId
+                }
+            })
+
+            eventHub.dispatchEvent(editEvent)
+        }
+
         if (clickEvent.target.id.startsWith("deleteNote--")) {
             const [deletePrefix, noteId] = clickEvent.target.id.split("--")
 
@@ -41,6 +53,7 @@ const NoteListComponent = () => {
                         <div>${individualNote.text}</div>
                         <div>${individualNote.date}</div>
                         <button id="deleteNote--${individualNote.id}">Delete</button>
+                        <button id="editNote--${individualNote.id}">Edit</button>
                     </section>
                 `
             }
